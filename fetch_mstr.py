@@ -15,6 +15,7 @@ def fetch_mstr_data(start_date="2020-08-10", end_date=None):
 def calculate_daily_returns(df, price_column="Close"):
     df = df.copy()
     df["Daily_Return"] = df[price_column].pct_change() * 100
+    df = df.dropna(subset=['Daily_Return'])
     return df
 
 def get_mstr_with_returns(start_date="2020-08-10", end_date=None):

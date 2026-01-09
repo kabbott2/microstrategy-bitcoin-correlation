@@ -20,7 +20,6 @@ def plot_daily_returns(merged_data):
     plt.tight_layout()
     plt.show()
 
-
 if __name__ == "__main__":
     print("Fetching data...")
     mstr_data = get_mstr_with_returns()

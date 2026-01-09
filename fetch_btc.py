@@ -17,8 +17,9 @@ def filter_weekends(df):
     return df
 
 def calculate_daily_returns(df, price_column="Close"):
-    df= df.copy()
+    df = df.copy()
     df["Daily_Return"] = df[price_column].pct_change() * 100
+    df = df.dropna(subset=['Daily_Return'])
     return df
 
 def get_btc_with_returns(start_date="2020-08-10", end_date=None, filter_weekends_flag=True):
