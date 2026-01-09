@@ -6,12 +6,19 @@ Strategy (MSTR), f.k.a. Microstrategy, is a digital asset treasury company (DATC
 What is the correlation between the share price of MSTR and the spot price of BTC in dollar terms? Does MTSR truly give investors "leveraged BTC" exposure as many espouse?
 
 ## Analysis Steps
-1. #### Fetch data.
-   Import the yFinance API and request the close price, ticker, volume, cumulative return, and volatility of BTC and MSTR. 
-2. #### Load data into dataframe
-   Use a Pandas dataframe to store this data, allowing for later visualization.
-3. #### Create visualizations
-   Use MatPlotLib to visaulize the results.
+1. #### Install dependencies
+* Pandas, NumPy, MatPlotLib, yfinance, and SciPy
+* For the most part, this is present in all modules.
+2. #### Fetch and clean data.
+* Source MSTR and BTC data from yfinance (open, close, high, low, volume [adj. for splits/dividends]) from August 10, 2020 (marks the date MSTR first acquired BTC). 
+* Remove BTC data on weekends, as MSTR only trades on weekdays.
+* Calculate daily return for MSTR and BTC, as raw prices are non-stationary, voiding the use of correlation analysis.
+* fetch_mstr.py, fetch_btc.py
+3. #### Merge datasets.
+* Load MSTR and BTC data into Pandas dataframes and merge them on the date index so they are aligned.
+* evaluate.py
+4. #### Create visualizations
+* Use MatPlotLib to visaulize the results.
 
 ## Findings
 ####
